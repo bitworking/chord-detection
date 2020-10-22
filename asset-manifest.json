@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/chord-detection/static/css/main.2db89a28.chunk.css",
-    "main.js": "/chord-detection/static/js/main.6c8b5e94.chunk.js",
-    "main.js.map": "/chord-detection/static/js/main.6c8b5e94.chunk.js.map",
+    "main.js": "/chord-detection/static/js/main.e7cd5f0d.chunk.js",
+    "main.js.map": "/chord-detection/static/js/main.e7cd5f0d.chunk.js.map",
     "runtime-main.js": "/chord-detection/static/js/runtime-main.aa52c669.js",
     "runtime-main.js.map": "/chord-detection/static/js/runtime-main.aa52c669.js.map",
     "static/js/2.f8d4d991.chunk.js": "/chord-detection/static/js/2.f8d4d991.chunk.js",
     "static/js/2.f8d4d991.chunk.js.map": "/chord-detection/static/js/2.f8d4d991.chunk.js.map",
     "index.html": "/chord-detection/index.html",
-    "precache-manifest.c94faeedff1e5ab56d3e1c971b3aef6d.js": "/chord-detection/precache-manifest.c94faeedff1e5ab56d3e1c971b3aef6d.js",
+    "precache-manifest.66f6564de8916552071a52c195dd6852.js": "/chord-detection/precache-manifest.66f6564de8916552071a52c195dd6852.js",
     "service-worker.js": "/chord-detection/service-worker.js",
     "static/css/main.2db89a28.chunk.css.map": "/chord-detection/static/css/main.2db89a28.chunk.css.map",
     "static/js/2.f8d4d991.chunk.js.LICENSE.txt": "/chord-detection/static/js/2.f8d4d991.chunk.js.LICENSE.txt"
@@ -17,6 +17,6 @@
     "static/js/runtime-main.aa52c669.js",
     "static/js/2.f8d4d991.chunk.js",
     "static/css/main.2db89a28.chunk.css",
-    "static/js/main.6c8b5e94.chunk.js"
+    "static/js/main.e7cd5f0d.chunk.js"
   ]
 }
