@@ -45,20 +45,69 @@ const startMIDIService = async (
   }
 };
 
-const parseMessage = (data: DataView, onMessage?: (data: Uint8Array) => void) => {
-  // active sensing
+// https://learn.sparkfun.com/tutorials/midi-ble-tutorial/all
+const parseMessage = (data: DataView, onMessage: (data: Uint8Array) => void = console.log) => {
+  // active sensing?
   if (data.buffer.byteLength === 3 && data.getUint8(2) === 254) {
     return;
   }
 
-  const array = new Uint8Array(3);
+  const bufferSize = data.buffer.byteLength;
 
-  for (var i = 2; i < data.buffer.byteLength; i++) {
-    array[i - 2] = data.getUint8(i);
-  }
+  //Pointers used to search through payload.
+  let lPtr = 2;
+  let rPtr = 0;
+  //lastStatus used to capture runningStatus
+  let lastStatus: number;
 
-  if (onMessage) {
-    onMessage(array);
+  while (1) {
+    lastStatus = data.getUint8(lPtr);
+    if (lastStatus < 0x80) {
+      //Status message not present, bail
+      return;
+    }
+    //Point to next non-data byte
+    rPtr = lPtr;
+    while (rPtr < bufferSize - 1 && data.getUint8(rPtr + 1) < 0x80) {
+      rPtr++;
+    }
+    //look at l and r pointers and decode by size.
+    if (rPtr - lPtr < 1) {
+      //Time code or system
+      onMessage(Uint8Array.from([lastStatus, 0, 0]));
+    } else if (rPtr - lPtr < 2) {
+      onMessage(Uint8Array.from([lastStatus, data.getUint8(lPtr + 1), 0]));
+    } else if (rPtr - lPtr < 3) {
+      onMessage(Uint8Array.from([lastStatus, data.getUint8(lPtr + 1), data.getUint8(lPtr + 2)]));
+    } else {
+      //Too much data
+      //If not System Common or System Real-Time, send it as running status
+      switch (data.getUint8(lPtr) & 0xf0) {
+        case 0x80:
+        case 0x90:
+        case 0xa0:
+        case 0xb0:
+        case 0xe0:
+          for (let i = lPtr; i < rPtr; i = i + 2) {
+            onMessage(Uint8Array.from([lastStatus, data.getUint8(i + 1), data.getUint8(i + 2)]));
+          }
+          break;
+        case 0xc0:
+        case 0xd0:
+          for (let i = lPtr; i < rPtr; i = i + 1) {
+            onMessage(Uint8Array.from([lastStatus, data.getUint8(i + 1), 0]));
+          }
+          break;
+        default:
+          break;
+      }
+    }
+    //Point to next status
+    lPtr = rPtr + 2;
+    if (lPtr >= bufferSize) {
+      //end of packet
+      return;
+    }
   }
 };
 

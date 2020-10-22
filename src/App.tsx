@@ -13,6 +13,8 @@ const App = () => {
   const [slashedChords, setSlashedChords] = useState<string[]>([]);
 
   const onMessage = (data: Uint8Array) => {
+    // console.log(data);
+
     // note on
     if (data[0] === 144 && data[2] > 0) {
       pressedNotes.add(data[1]);
