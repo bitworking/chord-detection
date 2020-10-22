@@ -226,31 +226,31 @@ export const data: Data[] = [
   // Other
   {
     // 1 5
-    name: '(no 3rd)',
+    name: '(no 3)',
     mask: 0b111111111111,
     bits: 0b100000010000,
   },
   {
     // 1 5 7
-    name: '(no 3rd)maj7',
+    name: '(no 3)maj7',
     mask: 0b111111111111,
     bits: 0b100000010001,
   },
   {
     // 1 5 7 9
-    name: '(no 3rd)maj9',
+    name: '(no 3)maj9',
     mask: 0b111111111111,
     bits: 0b101000010001,
   },
   {
     // 1 5 ♭7
-    name: '(no 3rd)7',
+    name: '(no 3)7',
     mask: 0b111111111111,
     bits: 0b100000010010,
   },
   {
     // 1 5 ♭7 9
-    name: '(no 3rd)9',
+    name: '(no 3)9',
     mask: 0b111111111111,
     bits: 0b101000010010,
   },

@@ -46,8 +46,6 @@ const App = () => {
     <>
       <div className="controls">
         <WebMidi onMessage={onMessage} />
-      </div>
-      <div className="controls">
         <WebBluetoothMidi onMessage={onMessage} />
       </div>
       <div className="container-chords">

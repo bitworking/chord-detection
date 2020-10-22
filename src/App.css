@@ -1,14 +1,16 @@
 .container-chords {
   white-space: pre-line;
-  display: flex;
-  justify-content: space-between;
-  font-size: 25px;
-  line-height: 1.5;
+  font-size: 28px;
+  font-weight: bold;
+  line-height: 1.8;
   margin: 0 auto;
+  text-align: center;
 }
 
 @media (min-width: 575px) {
   .container-chords {
+    display: flex;
+    justify-content: space-between;
     width: 80%;
   }
 }
